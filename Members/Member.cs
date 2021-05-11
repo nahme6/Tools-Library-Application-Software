@@ -1,16 +1,16 @@
-﻿using Assignment;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class Member : iMember
+    public class Member : iMember, IComparable<Member>
     {
-        string firstName;
-        string lastName;
-        string contactNumber;
-        string pin;
+        private string firstName;
+        private string lastName;
+        private string contactNumber;
+        private string pin;
+        private ToolCollection memberTools;
+
         public Member(string firstName, string lastName, string contactNumber, string pin)
         {
             this.firstName = firstName;
@@ -23,16 +23,28 @@ namespace Tools_Library_Application_Software
         public string ContactNumber { get => contactNumber; set => contactNumber = value; }
         public string PIN { get => pin; set => pin = value; }
 
-        public string[] Tools => ToolCollection.toArray();
-
-        public void addTool(iTool aTool)
+        public string[] Tools
         {
-            throw new NotImplementedException();
+            get
+            {
+                string[] Tools = Array.ConvertAll(memberTools.toArray(), new Converter<Tool, string>(ToolToString)); 
+                return Tools;
+            }
         }
 
-        public void deleteTool(iTool aTool)
+        private string ToolToString(Tool aTool)
         {
-            throw new NotImplementedException();
+            return new string(aTool.Name);
+        }
+
+        public void addTool(Tool aTool)
+        {
+            memberTools.add(aTool);
+        }
+
+        public void deleteTool(Tool aTool)
+        {
+            memberTools.delete(aTool);
         }
 
         public int CompareTo(Member another)
@@ -44,6 +56,13 @@ namespace Tools_Library_Application_Software
                 return firstName.CompareTo(another.FirstName);
             else
                 return 1;
+        }
+
+        public override string ToString()
+        {
+            return "First Name: " + firstName + "\n" +
+                "Last Name: " + lastName + "\n" +
+                "Contact Number: " + contactNumber + "\n";
         }
     }
 }

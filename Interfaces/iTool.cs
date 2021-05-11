@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Assignment
+namespace Tools_Library_Application_Software
 {
     //The specification of Tool ADT
-    interface iTool
+    public interface iTool
     {
 
         string Name // get and set the name of this tool
@@ -32,17 +32,15 @@ namespace Assignment
             set;
         }
 
-        iMemberCollection GetBorrowers  //get all the members who are currently holding this tool
+        MemberCollection GetBorrowers  //get all the members who are currently holding this tool
         {
             get;
         }
 
-        void addBorrower(iMember aMember); //add a member to the borrower list
+        void addBorrower(Member aMember); //add a member to the borrower list
 
-        void deleteBorrower(iMember aMember); //delte a member from the borrower list
+        void deleteBorrower(Member aMember); //delte a member from the borrower list
 
-        override string ToString(); //return a string containning the name and the available quantity quantity this tool 
-
+        string ToString(); //return a string containning the name and the available quantity quantity this tool
     }
-
 }

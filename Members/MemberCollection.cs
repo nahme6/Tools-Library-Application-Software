@@ -1,36 +1,36 @@
-﻿using Assignment;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    class MemberCollection : iMemberCollection
+    public class MemberCollection : iMemberCollection
     {
         // Collection needs to be Binary Search Tree
-        // toolCollection;
+        BSTree memberCollection;
+
         public MemberCollection()
         {
-            
+            memberCollection = new BSTree();
         }
         public int Number => throw new NotImplementedException();
 
-        public void add(iMember aMember)
+        public void add(Member aMember)
         {
-            throw new NotImplementedException();
+            memberCollection.Insert(aMember);
         }
 
-        public void delete(iMember aMember)
+        public void delete(Member aMember)
         {
-            throw new NotImplementedException();
+            memberCollection.Delete(aMember);
         }
 
-        public bool search(iMember aMember)
+        public bool search(Member aMember)
         {
-            throw new NotImplementedException();
+           return memberCollection.Search(aMember);
         }
 
-        public iMember[] toArray()
+        Member[] iMemberCollection.toArray()
         {
             throw new NotImplementedException();
         }

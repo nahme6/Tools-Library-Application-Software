@@ -1,9 +1,8 @@
-﻿using Assignment;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Interfaces
+namespace Tools_Library_Application_Software
 {
     interface iToolLibrarySystem
     {

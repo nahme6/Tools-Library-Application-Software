@@ -4,12 +4,10 @@
 // 24/3/06
 
 using System;
-using BSTreeInterface;
-using Tools_Library_Application_Software;
 
-namespace BSTreeClass
+namespace Tools_Library_Application_Software
 {
-	public class BTreeNode
+    public class BTreeNode
 	{
 		private Member item; // value
 		private BTreeNode lchild; // reference to its left child 
