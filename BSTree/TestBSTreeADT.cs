@@ -5,12 +5,13 @@
 
 using System;
 using BSTreeInterface;
-using BSTreeClass;
 
 public class TestBSTreeADT
 {
+	/*
 	static public void Main()
 	{
+		
 		// build a binary search tree
 		Console.WriteLine("Initially, an empty BST is created");
 		IBSTree aBSTree = new BSTree();
@@ -103,11 +104,14 @@ public class TestBSTreeADT
 
 		Console.WriteLine();
 		Console.WriteLine();
+		
 
-	}
+}
+	*/
 }
 
-        
+
+
 
 
 

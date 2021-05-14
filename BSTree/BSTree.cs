@@ -3,6 +3,7 @@
 // Maolin Tang 
 // 24/3/06
 
+using BSTreeInterface;
 using System;
 
 namespace Tools_Library_Application_Software
@@ -43,6 +44,7 @@ namespace Tools_Library_Application_Software
 	public class BSTree : IBSTree
 	{
 		private BTreeNode root;
+		private int count;
 
 		public BSTree()
 		{
@@ -53,6 +55,11 @@ namespace Tools_Library_Application_Software
 		{
 			return root == null;
 		}
+
+		public int number()
+        {
+			return count;
+        }
 
 		public bool Search(Member item)
 		{
@@ -80,7 +87,8 @@ namespace Tools_Library_Application_Software
 			if(root == null)
 				root = new BTreeNode(item);
 			else
-				Insert(item, root);	
+				Insert(item, root);
+			count++;
 		}
 
 		// pre: ptr != null
@@ -101,8 +109,9 @@ namespace Tools_Library_Application_Software
 				else 
 					Insert(item, ptr.RChild);
 			}
-		} 
-	
+			count++;
+		}
+
 		// there are three cases to consider:
 		// 1. the node to be deleted is a leaf
 		// 2. the node to be deleted has only one child 
@@ -165,8 +174,8 @@ namespace Tools_Library_Application_Software
 							parent.RChild = c;
 					}
 				}
-
 			}
+			count--;
 		}
 
 		public void PreOrderTraverse()
@@ -223,6 +232,7 @@ namespace Tools_Library_Application_Software
 		public void Clear()
 		{
 			root = null;
+			count = 0;
 		}
 	}
 }

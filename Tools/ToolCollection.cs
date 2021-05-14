@@ -9,12 +9,11 @@ namespace Tools_Library_Application_Software
         // Check whether this has to be explicitly an array data structure
         private Tool[] toolCollection;
         private int capacity;
-        private int count;
+        private int count = 0;
 
-        public ToolCollection(int capacity, int count)
+        public ToolCollection(int capacity)
         {
            this.capacity = capacity;
-           this.count = count;
            toolCollection = new Tool[capacity];
 
         }

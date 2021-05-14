@@ -9,7 +9,7 @@ namespace Tools_Library_Application_Software
         private string lastName;
         private string contactNumber;
         private string pin;
-        private ToolCollection memberTools;
+        private ToolCollection memberTools = new ToolCollection(2);
 
         public Member(string firstName, string lastName, string contactNumber, string pin)
         {
@@ -27,14 +27,14 @@ namespace Tools_Library_Application_Software
         {
             get
             {
-                string[] Tools = Array.ConvertAll(memberTools.toArray(), new Converter<Tool, string>(ToolToString)); 
+                string[] Tools = Array.ConvertAll(memberTools.toArray(), new Converter<Tool, string>(ToolToString)); // Need to fix
                 return Tools;
             }
         }
 
-        private string ToolToString(Tool aTool)
+        private string ToolToString(Tool aTool) // Fix
         {
-            return new string(aTool.Name);
+            return new string(aTool.ToString());
         }
 
         public void addTool(Tool aTool)

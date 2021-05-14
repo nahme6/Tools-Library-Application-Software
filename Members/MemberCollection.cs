@@ -13,7 +13,7 @@ namespace Tools_Library_Application_Software
         {
             memberCollection = new BSTree();
         }
-        public int Number => throw new NotImplementedException();
+        public int Number => memberCollection.number();
 
         public void add(Member aMember)
         {
@@ -30,7 +30,8 @@ namespace Tools_Library_Application_Software
            return memberCollection.Search(aMember);
         }
 
-        Member[] iMemberCollection.toArray()
+        // Need To impliment
+        public Member[] toArray()
         {
             throw new NotImplementedException();
         }

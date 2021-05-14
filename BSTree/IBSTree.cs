@@ -3,16 +3,14 @@
 // Maolin Tang
 // 24/3/06
 
-using System;
-using BSTreeClass;
 using Tools_Library_Application_Software;
 
-namespace BSTreeInterface 
+namespace BSTreeInterface
 {
-	// invariants: every node’s left subtree contains values less than or equal to 
-	// the node’s value, and every node’s right subtree contains values 
-	// greater than or equal to the node’s value
-	public interface IBSTree
+    // invariants: every node’s left subtree contains values less than or equal to 
+    // the node’s value, and every node’s right subtree contains values 
+    // greater than or equal to the node’s value
+    public interface IBSTree
 	{
 		// pre: true
 		// post: return true if the binary tree is empty; otherwise, return false.
