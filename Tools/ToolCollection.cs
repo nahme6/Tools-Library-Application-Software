@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 namespace Tools_Library_Application_Software
 {
-    class ToolCollection : iToolCollection
+    public class ToolCollection : iToolCollection
     {
-        // Check whether this has to be explicitly an array data structure
         private Tool[] toolCollection;
         private int capacity;
         private int count = 0;
@@ -18,6 +15,11 @@ namespace Tools_Library_Application_Software
 
         }
         public int Number => capacity;
+        
+        public void capacityChange (int capChange)
+        {
+            capacity += capChange;
+        }
 
         public void add(Tool aTool)
         {

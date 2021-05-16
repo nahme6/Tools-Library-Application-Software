@@ -8,6 +8,7 @@ public class Tool: iTool, IComparable<Tool>
     private string name;
     private int quantity;
     private int availableQuantity;
+    // Check whether this is total or live borrows
     private int noBorrowings;
     private MemberCollection members = new MemberCollection();
 
@@ -28,7 +29,15 @@ public class Tool: iTool, IComparable<Tool>
 
     public void addBorrower(Member aMember)
     {
-        members.add(aMember);
+        if (availableQuantity == 0) {
+            Console.WriteLine("All tools are borrowed");
+        } else if (availableQuantity < quantity) {
+            Console.WriteLine("Not enough tools");
+        } else {
+            members.add(aMember);
+            availableQuantity--;
+            noBorrowings++;
+        }
     }
 
     public int CompareTo(Tool tool)
@@ -43,7 +52,14 @@ public class Tool: iTool, IComparable<Tool>
 
     public void deleteBorrower(Member aMember)
     {
-        members.delete(aMember);
+        if (members.search(aMember) == false)
+        {
+            Console.WriteLine("Member is not borrowing this tool");
+        } else if (members.search(aMember) == true)
+        {
+            members.delete(aMember);
+            availableQuantity++;
+        }
     }
 
     public override string ToString()

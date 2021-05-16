@@ -44,7 +44,13 @@ namespace Tools_Library_Application_Software
 
         public void deleteTool(Tool aTool)
         {
-            memberTools.delete(aTool);
+            if (memberTools.search(aTool) == false)
+            {
+                Console.WriteLine("Member does not have tool");
+            } else
+            {
+                memberTools.delete(aTool);
+            }
         }
 
         public int CompareTo(Member another)
