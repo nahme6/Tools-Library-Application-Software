@@ -8,7 +8,6 @@ namespace Tools_Library_Application_Software
     {
         // Collection needs to be Binary Search Tree
         BSTree memberCollection;
-
         public MemberCollection()
         {
             memberCollection = new BSTree();
@@ -17,12 +16,24 @@ namespace Tools_Library_Application_Software
 
         public void add(Member aMember)
         {
-            memberCollection.Insert(aMember);
+            if (!memberCollection.Search(aMember))
+            {
+                memberCollection.Insert(aMember);
+            } else
+            {
+                Console.WriteLine("Member Already Exists");
+            }
         }
 
         public void delete(Member aMember)
         {
-            memberCollection.Delete(aMember);
+            if (!memberCollection.Search(aMember))
+            {
+                Console.WriteLine("Member Doesn't Exist");
+            } else
+            {
+                memberCollection.Delete(aMember);
+            }
         }
 
         public bool search(Member aMember)
@@ -30,10 +41,9 @@ namespace Tools_Library_Application_Software
            return memberCollection.Search(aMember);
         }
 
-        // Need To impliment
         public Member[] toArray()
         {
-            throw new NotImplementedException();
+           return memberCollection.GetMembers().ToArray();
         }
     }
 }

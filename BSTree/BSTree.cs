@@ -5,10 +5,11 @@
 
 using BSTreeInterface;
 using System;
+using System.Collections.Generic;
 
 namespace Tools_Library_Application_Software
 {
-    public class BTreeNode
+	public class BTreeNode
 	{
 		private Member item; // value
 		private BTreeNode lchild; // reference to its left child 
@@ -38,11 +39,12 @@ namespace Tools_Library_Application_Software
 			get { return rchild; }
 			set { rchild = value; }
 		}
+		
 	}
-
 
 	public class BSTree : IBSTree
 	{
+		private List<Member> members = new List<Member>();
 		private BTreeNode root;
 		private int count;
 
@@ -57,9 +59,9 @@ namespace Tools_Library_Application_Software
 		}
 
 		public int number()
-        {
+		{
 			return count;
-        }
+		}
 
 		public bool Search(Member item)
 		{
@@ -68,12 +70,12 @@ namespace Tools_Library_Application_Software
 
 		private bool Search(Member item, BTreeNode r)
 		{
-			if(r != null)
+			if (r != null)
 			{
-				if(item.CompareTo(r.Item) == 0)
+				if (item.CompareTo(r.Item) == 0)
 					return true;
 				else
-					if(item.CompareTo(r.Item) < 0 )
+					if (item.CompareTo(r.Item) < 0)
 					return Search(item, r.LChild);
 				else
 					return Search(item, r.RChild);
@@ -84,29 +86,30 @@ namespace Tools_Library_Application_Software
 
 		public void Insert(Member item)
 		{
-			if(root == null)
+			if (root == null)
 				root = new BTreeNode(item);
 			else
 				Insert(item, root);
+			members.Add(item);
 			count++;
 		}
 
 		// pre: ptr != null
 		// post: item is inserted to the binary search tree rooted at ptr
-		private void Insert (Member item, BTreeNode ptr)
+		private void Insert(Member item, BTreeNode ptr)
 		{
 			if (item.CompareTo(ptr.Item) < 0)
 			{
 				if (ptr.LChild == null)
 					ptr.LChild = new BTreeNode(item);
-				else 
+				else
 					Insert(item, ptr.LChild);
 			}
-			else 
+			else
 			{
-				if (ptr.RChild == null)			
+				if (ptr.RChild == null)
 					ptr.RChild = new BTreeNode(item);
-				else 
+				else
 					Insert(item, ptr.RChild);
 			}
 			count++;
@@ -121,31 +124,31 @@ namespace Tools_Library_Application_Software
 			// search for item and its parent
 			BTreeNode ptr = root; // search reference
 			BTreeNode parent = null; // parent of ptr
-			while((ptr!=null)&&(item.CompareTo(ptr.Item)!=0))
+			while ((ptr != null) && (item.CompareTo(ptr.Item) != 0))
 			{
 				parent = ptr;
-				if(item.CompareTo(ptr.Item) < 0) // move to the left child of ptr
+				if (item.CompareTo(ptr.Item) < 0) // move to the left child of ptr
 					ptr = ptr.LChild;
 				else
 					ptr = ptr.RChild;
 			}
 
-			if(ptr != null) // if the search was successful
+			if (ptr != null) // if the search was successful
 			{
 				// case 3: item has two children
-				if((ptr.LChild != null)&&(ptr.RChild != null))
+				if ((ptr.LChild != null) && (ptr.RChild != null))
 				{
 					// find the right-most node in left subtree of ptr
-					if(ptr.LChild.RChild == null) // a special case: the right subtree of ptr.LChild is empty
+					if (ptr.LChild.RChild == null) // a special case: the right subtree of ptr.LChild is empty
 					{
 						ptr.Item = ptr.LChild.Item;
 						ptr.LChild = ptr.LChild.LChild;
 					}
-					else 
+					else
 					{
 						BTreeNode p = ptr.LChild;
 						BTreeNode pp = ptr; // parent of p
-						while(p.RChild != null)
+						while (p.RChild != null)
 						{
 							pp = p;
 							p = p.RChild;
@@ -158,23 +161,24 @@ namespace Tools_Library_Application_Software
 				else // cases 1 & 2: item has no or only one child
 				{
 					BTreeNode c;
-					if(ptr.LChild != null)
+					if (ptr.LChild != null)
 						c = ptr.LChild;
 					else
 						c = ptr.RChild;
 
 					// remove node ptr
-					if(ptr == root) //need to change root
+					if (ptr == root) //need to change root
 						root = c;
 					else
 					{
-						if(ptr == parent.LChild)
+						if (ptr == parent.LChild)
 							parent.LChild = c;
 						else
 							parent.RChild = c;
 					}
 				}
 			}
+			members.Remove(item);
 			count--;
 		}
 
@@ -187,7 +191,7 @@ namespace Tools_Library_Application_Software
 
 		private void PreOrderTraverse(BTreeNode root)
 		{
-			if(root != null)
+			if (root != null)
 			{
 				Console.Write(root.Item);
 				PreOrderTraverse(root.LChild);
@@ -204,7 +208,7 @@ namespace Tools_Library_Application_Software
 
 		private void InOrderTraverse(BTreeNode root)
 		{
-			if(root != null)
+			if (root != null)
 			{
 				InOrderTraverse(root.LChild);
 				Console.Write(root.Item);
@@ -221,11 +225,11 @@ namespace Tools_Library_Application_Software
 
 		private void PostOrderTraverse(BTreeNode root)
 		{
-			if(root != null)
+			if (root != null)
 			{
 				PostOrderTraverse(root.LChild);
 				PostOrderTraverse(root.RChild);
-				Console.Write(root.Item); 
+				Console.Write(root.Item);
 			}
 		}
 
@@ -233,6 +237,11 @@ namespace Tools_Library_Application_Software
 		{
 			root = null;
 			count = 0;
+		}
+
+		public List<Member> GetMembers()
+		{
+			return members;
 		}
 	}
 }

@@ -12,14 +12,8 @@ namespace Tools_Library_Application_Software
         {
            this.capacity = capacity;
            toolCollection = new Tool[capacity];
-
         }
-        public int Number => capacity;
-        
-        public void capacityChange (int capChange)
-        {
-            capacity += capChange;
-        }
+        public int Number => count;
 
         public void add(Tool aTool)
         {
@@ -28,7 +22,7 @@ namespace Tools_Library_Application_Software
                 toolCollection[count] = aTool;
                 count++;
             }
-            else if (!toolCollection.Contains(aTool) && count < capacity)
+            else if (!toolCollection.Contains(aTool))
             {
                 toolCollection[count] = aTool;
                 count++;
@@ -73,5 +67,16 @@ namespace Tools_Library_Application_Software
         {
             return toolCollection.ToArray();
         }
+
+        public void writeToolsToConsole()
+        {
+            foreach (Tool tool in toolCollection.ToArray())
+            {
+                if (tool != null)
+                {
+                    Console.WriteLine(tool.ToString());
+                }
+            }
+        }
     }
-}
+}       

@@ -27,14 +27,21 @@ namespace Tools_Library_Application_Software
         {
             get
             {
-                string[] Tools = Array.ConvertAll(memberTools.toArray(), new Converter<Tool, string>(ToolToString)); // Need to fix
+                string[] Tools = Array.ConvertAll<Tool, string>(memberTools.toArray(), ToolCollectionToString);
                 return Tools;
             }
         }
 
-        private string ToolToString(Tool aTool) // Fix
+        public void GetMemberTools()
         {
-            return new string(aTool.ToString());
+            memberTools.writeToolsToConsole();
+
+        }
+
+        // https://stackoverflow.com/questions/15318946/converting-a-object-array-to-an-string-array-in-c
+        string ToolCollectionToString(Tool tool)
+        {
+            return tool?.ToString() ?? string.Empty;
         }
 
         public void addTool(Tool aTool)

@@ -31,12 +31,11 @@ public class Tool: iTool, IComparable<Tool>
     {
         if (availableQuantity == 0) {
             Console.WriteLine("All tools are borrowed");
-        } else if (availableQuantity < quantity) {
-            Console.WriteLine("Not enough tools");
         } else {
             members.add(aMember);
             availableQuantity--;
             noBorrowings++;
+            Console.WriteLine(aMember.FirstName + " " + aMember.LastName + " is now borrowing: " + name);
         }
     }
 
