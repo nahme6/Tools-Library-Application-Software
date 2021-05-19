@@ -5,7 +5,7 @@ namespace Tools_Library_Application_Software
     public class ToolLibrarySystem : iToolLibrarySystem
     {
         int toolCollectionSize = 30; // Cap change
-        ToolCollection[][] toolCategories;
+        public ToolCollection[][] toolCategories;
         // Gardening Tools
         ToolCollection[] gardeningTools;
         ToolCollection lineTrimmers;
@@ -167,6 +167,11 @@ namespace Tools_Library_Application_Software
             driveTrain = toolCategories[8][5] = new ToolCollection(toolCollectionSize); // Drive Train
 
             members = new MemberCollection();
+        }
+
+        public MemberCollection Members
+        {
+            get => members;
         }
 
         public void add(Tool aTool)
@@ -462,17 +467,29 @@ namespace Tools_Library_Application_Software
         public void findMemberDetails(string firstName, string lastName)
         {
             Member searchMember = new Member(firstName, lastName, null, null);
-
+            bool found = false;
             foreach (Member member in members.toArray())
             {
                 if (member.FirstName == searchMember.FirstName && member.LastName == searchMember.LastName)
                 {
                     searchMember.ContactNumber = member.ContactNumber;
+                    searchMember.PIN = member.PIN;
+                    found = true;
                 }
             }
 
-            Console.WriteLine(searchMember.FirstName + " " + searchMember.LastName + " Contact Number:\n" +
-                searchMember.ContactNumber);
+            if (found)
+            {
+                Console.WriteLine(searchMember.FirstName + " " + searchMember.LastName + ": \n " +
+                    "Contact Number:\n" +
+                    searchMember.ContactNumber +
+                    "Member Pin:\n" +
+                    searchMember.PIN);
+            } else
+            {
+                Console.WriteLine("Member not found");
+            }
+
         }
     }
 }

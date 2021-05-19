@@ -82,22 +82,22 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
+                    new AddToolForm(ToolTypes.scrapers);
                     break;
                 case 2:
+                    new AddToolForm(ToolTypes.floorLasers);
                     break;
                 case 3:
+                    new AddToolForm(ToolTypes.floorLevellingTools);
                     break;
                 case 4:
+                    new AddToolForm(ToolTypes.floorLevellingMaterials);
                     break;
                 case 5:
+                    new AddToolForm(ToolTypes.floorHandTools);
                     break;
                 case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
+                    new AddToolForm(ToolTypes.tilingTools);
                     break;
             }
         }

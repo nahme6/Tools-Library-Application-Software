@@ -81,29 +81,19 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
-                    new GardenToolTypeMenu();
+                    new AddToolForm(ToolTypes.voltageTester);
                     break;
                 case 2:
-                    new FlooringToolTypeMenu();
+                    new AddToolForm(ToolTypes.oscilloscopes);
                     break;
                 case 3:
-                    new FencingToolTypeMenu();
+                    new AddToolForm(ToolTypes.thermalImaging);
                     break;
                 case 4:
-                    new MesuringToolTypeMenu();
+                    new AddToolForm(ToolTypes.dataTestTool);
                     break;
                 case 5:
-                    new CleaningToolTypeMenu();
-                    break;
-                case 6:
-                    new PaintingToolTypeMenu();
-                    break;
-                case 7:
-                    new ElectronicToolTypeMenu();
-                    break;
-                case 8:
-                    break;
-                case 9:
+                    new AddToolForm(ToolTypes.insulationTesters);
                     break;
             }
         }

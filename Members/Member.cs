@@ -18,6 +18,13 @@ namespace Tools_Library_Application_Software
             this.contactNumber = contactNumber;
             this.pin = pin;
         }
+
+        public Member(string firstName, string lastName)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public string ContactNumber { get => contactNumber; set => contactNumber = value; }

@@ -81,25 +81,19 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
-                    new GardenToolTypeMenu();
+                    new AddToolForm(ToolTypes.handTools);
                     break;
                 case 2:
-                    new FlooringToolTypeMenu();
+                    new AddToolForm(ToolTypes.electricFencing);
                     break;
                 case 3:
-                    new FencingToolTypeMenu();
+                    new AddToolForm(ToolTypes.steelFencingTools);
                     break;
                 case 4:
+                    new AddToolForm(ToolTypes.powerTools);
                     break;
                 case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
+                    new AddToolForm(ToolTypes.fencingAccessories);
                     break;
             }
         }

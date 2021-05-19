@@ -4,25 +4,19 @@ namespace Tools_Library_Application_Software
 {
     class Program
     {
+        public static ToolLibrarySystem toolLibrarySystem;
         static void Main(string[] args)
         {
-            ToolLibrarySystem toolLibrarySystem = new ToolLibrarySystem();
+            Tool tool1 = new Tool("Irwin 125mm orbital sander", 5, 3, 2);
+            Tool tool2 = new Tool("Rocket sanding block holder", 2, 1, 1);
+            Tool tool3 = new Tool("Powerfit 120 triangular sander", 1, 1, 0);
 
-            Console.WriteLine("Enter Tool Name: ");
-            Console.WriteLine();
-            string toolName = Console.ReadLine();
+            toolLibrarySystem = new ToolLibrarySystem();
 
-
-
-            Console.WriteLine("Enter Tool Quantity: ");
-            Console.WriteLine();
-            string toolQuantity = Console.ReadLine();
-
-            Tool newTool = new Tool(toolName, toolQuantity, toolQuantity, 0);
-
-            toolLibrarySystem.add(newTool, ToolTypes.lineTrimmers);
-
-            //new MainMenu();
+            toolLibrarySystem.add(tool1, ToolTypes.basicHandTools);
+            toolLibrarySystem.add(tool2, ToolTypes.basicHandTools);
+            toolLibrarySystem.add(tool3, ToolTypes.basicHandTools);
+            new MainMenu();
 
 
             /*
@@ -98,9 +92,7 @@ namespace Tools_Library_Application_Software
             /*
             ToolLibrarySystem toolLibrarySystem = new ToolLibrarySystem();
 
-            Tool tool1 = new Tool("Irwin 125mm orbital sander", 5, 3, 2);
-            Tool tool2 = new Tool("Rocket sanding block holder", 2, 1, 1);
-            Tool tool3 = new Tool("Powerfit 120 triangular sander", 1, 1, 0);
+            
 
             Member member1 = new Member("Navid", "Ahmed", "0450077117", "7777");
             Member member2 = new Member("Steve", "Rogers", "0450248454", "0000");

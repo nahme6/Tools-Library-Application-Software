@@ -50,17 +50,64 @@ namespace Tools_Library_Application_Software
             }
         }
 
+        public void removeToolQuantity(Tool aTool)
+        {
+            foreach (Tool tool in toolCollection ?? Enumerable.Empty<Tool>())
+            {
+                if (tool != null)
+                {
+                    if (tool.Name == aTool.Name)
+                    {
+                        tool.Quantity -= aTool.Quantity;
+                    }
+                }
+            }
+        }
+
         public bool search(Tool aTool)
         {
             bool toolSearch = false;
-            foreach (Tool tool in toolCollection)
+            foreach (Tool tool in toolCollection ?? Enumerable.Empty<Tool>())
             {
-                if (tool == aTool)
+                if (tool != null)
                 {
-                    toolSearch = true;
+                    if (tool == aTool)
+                    {
+                        toolSearch = true;
+                    }
                 }
             }
             return toolSearch;
+        }
+
+        public bool toolNameSearch(Tool aTool)
+        {
+            bool toolSearch = false;
+            foreach (Tool tool in toolCollection ?? Enumerable.Empty<Tool>())
+            {
+                if (tool != null)
+                {
+                    if (tool.Name == aTool.Name)
+                    {
+                        toolSearch = true;
+                    }
+                }         
+            }
+            return toolSearch;
+        }
+
+        public void addToolQuantity(Tool aTool)
+        {
+            foreach (Tool tool in toolCollection ?? Enumerable.Empty<Tool>())
+            {
+                if (tool != null)
+                {
+                    if (tool.Name == aTool.Name)
+                    {
+                        tool.Quantity += aTool.Quantity;
+                    }
+                }
+            }
         }
 
         public Tool[] toArray()

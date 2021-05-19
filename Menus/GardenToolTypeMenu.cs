@@ -82,23 +82,20 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
-
+                    new AddToolForm(ToolTypes.lineTrimmers);
                     break;
                 case 2:
+                    new AddToolForm(ToolTypes.lawnMowers);
                     break;
                 case 3:
+                    new AddToolForm(ToolTypes.handMowers);
                     break;
                 case 4:
+                    new AddToolForm(ToolTypes.wheelBarrows);
                     break;
                 case 5:
+                    new AddToolForm(ToolTypes.gardenPowerTools);
                     break;
-
-                "Line Trimmers",
-                "Lawn Mowers",
-                "Hand Mowers",
-                "Wheel Barrows",
-                "Garden Power Tools",
-                "Return to previous menu"
             }
         }
     }

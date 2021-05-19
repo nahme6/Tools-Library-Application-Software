@@ -20,6 +20,17 @@ public class Tool: iTool, IComparable<Tool>
         this.noBorrowings = noBorrowings;
     }
 
+    public Tool(string name)
+    {
+        this.name = name;
+    }
+
+    public Tool(string name, int quantity)
+    {
+        this.name = name;
+        this.quantity = quantity;
+    }
+
     public string Name { get => name; set => name = value;}
     public int Quantity { get => quantity; set => quantity = value; }
     public int AvailableQuantity { get => availableQuantity; set => availableQuantity = value; }

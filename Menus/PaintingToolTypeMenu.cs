@@ -82,28 +82,22 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
-                    new GardenToolTypeMenu();
+                    new AddToolForm(ToolTypes.sandingTools);
                     break;
                 case 2:
-                    new FlooringToolTypeMenu();
+                    new AddToolForm(ToolTypes.brushes);
                     break;
                 case 3:
-                    new FencingToolTypeMenu();
+                    new AddToolForm(ToolTypes.rollers);
                     break;
                 case 4:
-                    new MesuringToolTypeMenu();
+                    new AddToolForm(ToolTypes.paintRemovalTools);
                     break;
                 case 5:
-                    new CleaningToolTypeMenu();
+                    new AddToolForm(ToolTypes.paintScrapers);
                     break;
                 case 6:
-                    new PaintingToolTypeMenu();
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
+                    new AddToolForm(ToolTypes.sprayers);
                     break;
             }
         }

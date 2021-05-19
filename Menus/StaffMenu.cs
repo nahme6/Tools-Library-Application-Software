@@ -86,14 +86,19 @@ namespace Tools_Library_Application_Software
                     new ToolCategoriesMenu();
                     break;
                 case 2:
+                    new AddQuantityForm();
                     break;
                 case 3:
+                    new RemoveQuantityForm();
                     break;
                 case 4:
+                    new AddMemberForm();
                     break;
                 case 5:
+                    new RemoveMemberForm();
                     break;
                 case 6:
+                    new FindMemberDetailsForm();
                     break;
             }
         }
