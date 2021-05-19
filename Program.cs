@@ -6,13 +6,24 @@ namespace Tools_Library_Application_Software
     {
         static void Main(string[] args)
         {
-            string mainMenuInput;
-            string staffMenuInput;
             ToolLibrarySystem toolLibrarySystem = new ToolLibrarySystem();
 
-            
-            MainMenu.Display();
-            
+            Console.WriteLine("Enter Tool Name: ");
+            Console.WriteLine();
+            string toolName = Console.ReadLine();
+
+
+
+            Console.WriteLine("Enter Tool Quantity: ");
+            Console.WriteLine();
+            string toolQuantity = Console.ReadLine();
+
+            Tool newTool = new Tool(toolName, toolQuantity, toolQuantity, 0);
+
+            toolLibrarySystem.add(newTool, ToolTypes.lineTrimmers);
+
+            //new MainMenu();
+
 
             /*
             string[] mainMenuOptions = { "Staff Login", "Member Login", "Exit" };

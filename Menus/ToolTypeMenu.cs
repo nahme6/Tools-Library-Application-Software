@@ -6,7 +6,7 @@ namespace Tools_Library_Application_Software
 {
     public class ToolTypeMenu
     {
-
+        /*
         Menu toolTypeMenu;
 
         public ToolTypeMenu(string input)
@@ -30,5 +30,6 @@ namespace Tools_Library_Application_Software
 
 
         Menu menu = new Menu("Garden Tool Types", toolT);
+        */
     }
 }

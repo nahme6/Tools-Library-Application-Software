@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class Menu
+    public class Menu1
     {
         private string title;
         private string[] selections;
         public int input;
-        public Menu(string title, string[] selections)
+        public Menu1(string title, string[] selections)
         {
             this.title = title;
-            this.selections = selections;  
+            this.selections = selections;
         }
 
         public string Title
@@ -45,7 +45,9 @@ namespace Tools_Library_Application_Software
             Console.WriteLine("\nPlease Make a selection (1-{0}, or 0 to {1}):", selections.Length - 1, selections[selections.Length - 1]);
         }
     }
+}
 
+    /*
     public class MainMenu
     {
         static Menu mainMenu;
@@ -295,3 +297,4 @@ namespace Tools_Library_Application_Software
         }
     }
 }
+*/
