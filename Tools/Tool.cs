@@ -46,7 +46,7 @@ public class Tool: iTool, IComparable<Tool>
             members.add(aMember);
             availableQuantity--;
             noBorrowings++;
-            Console.WriteLine(aMember.FirstName + " " + aMember.LastName + " is now borrowing: " + name);
+            Console.WriteLine(aMember.FirstName + " " + aMember.LastName + " is now borrowing: " + name + "\n");
         }
     }
 
@@ -64,7 +64,7 @@ public class Tool: iTool, IComparable<Tool>
     {
         if (members.search(aMember) == false)
         {
-            Console.WriteLine("Member is not borrowing this tool");
+            Console.WriteLine("{0} has returned {1}", aMember, name);
         } else if (members.search(aMember) == true)
         {
             members.delete(aMember);
@@ -75,6 +75,7 @@ public class Tool: iTool, IComparable<Tool>
     public override string ToString()
     {
         return "Tool Name: " + name + "\n" +
-            "Quantity: " + quantity + "\n";
+            "Quantity: " + quantity + "\n" +
+            "Available Quantity: " + availableQuantity + "\n";
     }
 }

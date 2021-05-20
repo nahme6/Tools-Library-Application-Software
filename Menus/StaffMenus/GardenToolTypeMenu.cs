@@ -4,20 +4,23 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    public class GardenToolTypeMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
 
-        public MainMenu()
+        public GardenToolTypeMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] menuSelection = {
+                "Line Trimmers",
+                "Lawn Mowers",
+                "Hand Mowers",
+                "Wheel Barrows",
+                "Garden Power Tools",
+                "Return to previous menu"};
+            menuDetails = new MenuDetails("Garden Tool Types", menuSelection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +32,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    gardenToolTypeMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,18 +76,29 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void gardenToolTypeMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+
+                    new AddToolForm(ToolTypes.lineTrimmers);
                     break;
                 case 2:
-                    new MLoginForm();
+                    new AddToolForm(ToolTypes.lawnMowers);
+                    break;
+                case 3:
+                    new AddToolForm(ToolTypes.handMowers);
+                    break;
+                case 4:
+                    new AddToolForm(ToolTypes.wheelBarrows);
+                    break;
+                case 5:
+                    new AddToolForm(ToolTypes.gardenPowerTools);
                     break;
             }
         }
     }
 }
+

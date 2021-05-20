@@ -4,23 +4,26 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class GardenToolTypeMenu
+    class MToolCategoriesMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public GardenToolTypeMenu()
+        public MToolCategoriesMenu()
         {
-            string[] menuSelection = {
-                "Line Trimmers",
-                "Lawn Mowers",
-                "Hand Mowers",
-                "Wheel Barrows",
-                "Garden Power Tools",
+            string[] selection = {
+                "Gardening Tools",
+                "Flooring Tools",
+                "Fencing Tools",
+                "Measuring Tools",
+                "Cleaning Tools",
+                "Painting Tools",
+                "Electronic Tools",
+                "Electricity Tools",
+                "Automotive Tools",
                 "Return to previous menu"};
-            menuDetails = new MenuDetails("Garden Tool Types", menuSelection);
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -32,7 +35,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    gardenToolTypeMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -77,27 +80,38 @@ namespace Tools_Library_Application_Software
             return option;
         }
 
-        public static void gardenToolTypeMenuNext(int menuOption)
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                    new AddToolForm(ToolTypes.lineTrimmers);
+                    new MGardenToolTypeMenu();
                     break;
                 case 2:
-                    new AddToolForm(ToolTypes.lawnMowers);
+                    new MFlooringToolTypeMenu();
                     break;
                 case 3:
-                    new AddToolForm(ToolTypes.handMowers);
+                    new MFencingToolTypeMenu();
                     break;
                 case 4:
-                    new AddToolForm(ToolTypes.wheelBarrows);
+                    new MMesuringToolTypeMenu();
                     break;
                 case 5:
-                    new AddToolForm(ToolTypes.gardenPowerTools);
+                    new MCleaningToolTypeMenu();
+                    break;
+                case 6:
+                    new MPaintingToolTypeMenu();
+                    break;
+                case 7:
+                    new MElectronicToolTypeMenu();
+                    break;
+                case 8:
+                    new MElectricityToolTypeMenu();
+                    break;
+                case 9:
+                    new MAutomotiveToolTypeMenu();
                     break;
             }
         }
     }
 }
-

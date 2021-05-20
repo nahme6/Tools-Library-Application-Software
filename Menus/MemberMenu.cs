@@ -6,13 +6,15 @@ namespace Tools_Library_Application_Software
 {
     public class MemberMenu
     {
+        static Member member;
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
 
-        public MemberMenu()
+        public MemberMenu(Member Lmember)
         {
+            member = Lmember;
             string[] memberMenuOptions = {
                 "Display all the tools of a tool type",
                 "Borrow a tool",
@@ -83,16 +85,32 @@ namespace Tools_Library_Application_Software
             switch (menuOption)
             {
                 case 1:
+                    new DisplayToolTypeForm();
                     break;
                 case 2:
+                    new MToolCategoriesMenu();
                     break;
                 case 3:
+                    new ReturnToolForm();
                     break;
                 case 4:
+                    member.GetMemberTools();
+                    new MemberMenu(member);
                     break;
                 case 5:
+                    Console.WriteLine();
+                    Program.toolLibrarySystem.displayTopTHree();
+                    break;
+                case 6:
+                    Console.WriteLine(member.ContactNumber.ToString());
+                    new MemberMenu(member);
                     break;
             }
+        }
+
+        public static Member Member()
+        {
+            return member;
         }
     }
 }

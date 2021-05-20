@@ -45,5 +45,10 @@ namespace Tools_Library_Application_Software
         {
            return memberCollection.GetMembers().ToArray();
         }
+
+        public Member GetMember(Member member)
+        {
+            return memberCollection.GetMember(member);
+        }
     }
 }

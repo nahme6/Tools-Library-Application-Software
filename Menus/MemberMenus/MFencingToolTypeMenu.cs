@@ -4,20 +4,22 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    public class MFencingToolTypeMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public MainMenu()
+        public MFencingToolTypeMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] selection = {
+                "Hand Tools",
+                "Electric Fencing",
+                "Steel Fencing Tools",
+                "Power Tools",
+                "Fencing Accessories",
+                "Return to previous menu"};
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +31,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,18 +75,28 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+                    new BorrowToolForm(ToolTypes.handTools);
                     break;
                 case 2:
-                    new MLoginForm();
+                    new BorrowToolForm(ToolTypes.electricFencing);
+                    break;
+                case 3:
+                    new BorrowToolForm(ToolTypes.steelFencingTools);
+                    break;
+                case 4:
+                    new BorrowToolForm(ToolTypes.powerTools);
+                    break;
+                case 5:
+                    new BorrowToolForm(ToolTypes.fencingAccessories);
                     break;
             }
         }
+
     }
 }

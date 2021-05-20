@@ -84,6 +84,19 @@ namespace Tools_Library_Application_Software
 				return false;
 		}
 
+		public Member GetMember(Member aMember)
+        {
+			Member getMember = null;
+			foreach (Member member in members)
+            {
+				if (aMember.FirstName == member.FirstName && aMember.LastName == member.LastName)
+                {
+					return getMember = member;
+				}
+			}
+			return getMember;
+        }
+
 		public void Insert(Member item)
 		{
 			if (root == null)

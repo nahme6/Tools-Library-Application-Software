@@ -4,20 +4,22 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    public class MElectricityToolTypeMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public MainMenu()
+        public MElectricityToolTypeMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] selection = {
+                "Test Equipment",
+                "Safety Equipment",
+                "Basic Hand Tools",
+                "Circuit Protection",
+                "Cable Tools",
+                "Return to previous menu"};
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +31,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,16 +75,25 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+                    new BorrowToolForm(ToolTypes.testEquipment);
                     break;
                 case 2:
-                    new MLoginForm();
+                    new BorrowToolForm(ToolTypes.safetyEquipment);
+                    break;
+                case 3:
+                    new BorrowToolForm(ToolTypes.basicHandTools);
+                    break;
+                case 4:
+                    new BorrowToolForm(ToolTypes.circuitProtection);
+                    break;
+                case 5:
+                    new BorrowToolForm(ToolTypes.cableTools);
                     break;
             }
         }

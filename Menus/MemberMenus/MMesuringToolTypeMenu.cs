@@ -4,20 +4,23 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    class MMesuringToolTypeMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public MainMenu()
+        public MMesuringToolTypeMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] selection = {
+                "Distance Tools",
+                "Laser Measurer",
+                "Measuring Jugs",
+                "Tempreture & Humidity Tools",
+                "Levelling Tools",
+                "Markers",
+                "Return to preivous menu"};
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +32,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,16 +76,27 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+                    new BorrowToolForm(ToolTypes.distanceTools);
                     break;
-                case 2:
-                    new MLoginForm();
+                    new BorrowToolForm(ToolTypes.laserMeasurer);
+                    break;
+                case 3:
+                    new BorrowToolForm(ToolTypes.measuringJugs);
+                    break;
+                case 4:
+                    new BorrowToolForm(ToolTypes.tempretureAndHumidityTools);
+                    break;
+                case 5:
+                    new BorrowToolForm(ToolTypes.levellingTools);
+                    break;
+                case 6:
+                    new BorrowToolForm(ToolTypes.markers);
                     break;
             }
         }

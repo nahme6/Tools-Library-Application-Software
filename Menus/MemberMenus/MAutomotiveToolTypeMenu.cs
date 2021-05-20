@@ -4,20 +4,23 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    public class MAutomotiveToolTypeMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public MainMenu()
+        public MAutomotiveToolTypeMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] selection = {
+                "Jacks",
+                "Air Compressors",
+                "Battery Chargers",
+                "Socket Tools",
+                "Braking",
+                "Drivetrain",
+                "Return to previous menu"};
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +32,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,16 +76,28 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+                    new BorrowToolForm(ToolTypes.jacks);
                     break;
                 case 2:
-                    new MLoginForm();
+                    new BorrowToolForm(ToolTypes.airCompressors);
+                    break;
+                case 3:
+                    new BorrowToolForm(ToolTypes.batteryChargers);
+                    break;
+                case 4:
+                    new BorrowToolForm(ToolTypes.socketTools);
+                    break;
+                case 5:
+                    new BorrowToolForm(ToolTypes.braking);
+                    break;
+                case 6:
+                    new BorrowToolForm(ToolTypes.driveTrain);
                     break;
             }
         }

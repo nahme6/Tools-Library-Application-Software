@@ -15,6 +15,19 @@ namespace Tools_Library_Application_Software
         }
         public int Number => count;
 
+        public Tool GetTool(Tool aTool)
+        {
+            Tool returnTool = null;
+            foreach (Tool tool in toolCollection)
+            {
+                if (tool.Name == aTool.Name)
+                {
+                    return returnTool = tool;
+                }
+            }
+            return returnTool;
+        }
+
         public void add(Tool aTool)
         {
             if (count == 0)

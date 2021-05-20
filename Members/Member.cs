@@ -9,7 +9,7 @@ namespace Tools_Library_Application_Software
         private string lastName;
         private string contactNumber;
         private string pin;
-        private ToolCollection memberTools = new ToolCollection(2);
+        ToolCollection memberTools = new ToolCollection(2);
 
         public Member(string firstName, string lastName, string contactNumber, string pin)
         {
@@ -41,8 +41,26 @@ namespace Tools_Library_Application_Software
 
         public void GetMemberTools()
         {
-            memberTools.writeToolsToConsole();
+            foreach (Tool tool in memberTools.toArray())
+            {
+                if (tool != null)
+                {
+                    Console.WriteLine(tool.ToString());
+                }
+            }
+        }
 
+        // fix null tool
+        public bool isBorrowingTool(Tool tool)
+        {
+            foreach (Tool tool1 in memberTools.toArray())
+            {
+                if (tool1.Name == tool.Name)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         // https://stackoverflow.com/questions/15318946/converting-a-object-array-to-an-string-array-in-c

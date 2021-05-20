@@ -4,20 +4,26 @@ using System.Text;
 
 namespace Tools_Library_Application_Software
 {
-    public class MainMenu
+    class MemberToolCategoryMenu
     {
         public int[] selection;
         public MenuDetails menuDetails;
         public static string title;
         public static string[] menuSelection;
-
-        public MainMenu()
+        public MemberToolCategoryMenu()
         {
-            string[] mainMenuSelection = { 
-                "Staff Login", 
-                "Member Login", 
-                "Exit" };
-            menuDetails = new MenuDetails("Main Menu", mainMenuSelection);
+            string[] selection = {
+                "Gardening Tools",
+                "Flooring Tools",
+                "Fencing Tools",
+                "Measuring Tools",
+                "Cleaning Tools",
+                "Painting Tools",
+                "Electronic Tools",
+                "Electricity Tools",
+                "Automotive Tools",
+                "Return to previous menu"};
+            menuDetails = new MenuDetails("Tool Categories", selection);
             title = menuDetails.Title;
             menuSelection = menuDetails.Selection;
 
@@ -29,7 +35,7 @@ namespace Tools_Library_Application_Software
 
                 if (menuOption != 0)
                 {
-                    mainMenuNext(menuOption);
+                    toolCategoryMenuNext(menuOption);
                 }
             } while (menuOption != 0);
         }
@@ -73,18 +79,40 @@ namespace Tools_Library_Application_Software
             } while (!okayChoice);
             return option;
         }
-        public static void mainMenuNext(int menuOption)
+
+        public static void toolCategoryMenuNext(int menuOption)
         {
             switch (menuOption)
             {
                 case 1:
-                   new SLoginForm();
-                    
+                    new GardenToolTypeMenu();
                     break;
                 case 2:
-                    new MLoginForm();
+                    new FlooringToolTypeMenu();
+                    break;
+                case 3:
+                    new FencingToolTypeMenu();
+                    break;
+                case 4:
+                    new MesuringToolTypeMenu();
+                    break;
+                case 5:
+                    new CleaningToolTypeMenu();
+                    break;
+                case 6:
+                    new PaintingToolTypeMenu();
+                    break;
+                case 7:
+                    new ElectronicToolTypeMenu();
+                    break;
+                case 8:
+                    new ElectricityToolTypeMenu();
+                    break;
+                case 9:
+                    new AutomotiveToolTypeMenu();
                     break;
             }
         }
     }
 }
+

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace Tools_Library_Application_Software
 {
     public class ToolLibrarySystem : iToolLibrarySystem
     {
+        int toolCount = 0;
         int toolCollectionSize = 30; // Cap change
         public ToolCollection[][] toolCategories;
         // Gardening Tools
@@ -82,9 +84,9 @@ namespace Tools_Library_Application_Software
         ToolCollection socketTools; // Socket Tools
         ToolCollection braking; // Braking
         ToolCollection driveTrain; // Drive Train
-        
+
         Tool newTool;
-        MemberCollection members;
+        public MemberCollection members;
         public ToolLibrarySystem()
         {
             toolCategories = new ToolCollection[9][];
@@ -197,6 +199,7 @@ namespace Tools_Library_Application_Software
         {
             toolCollectionSelection(toolType).add(tool);
             Console.WriteLine("New Tool Added");
+            toolCount += 1;
         }
 
         public void add(Member aMember)
@@ -212,14 +215,15 @@ namespace Tools_Library_Application_Software
 
         public void delete(Tool aTool)
         {
-            for (int i = 1; i<toolCategories.Length; i++)
+            for (int i = 1; i < toolCategories.Length; i++)
             {
-                for (int j = 1; j<toolCategories[i].Length; j++)
+                for (int j = 1; j < toolCategories[i].Length; j++)
                 {
                     if (toolCategories[i][j].search(aTool))
                     {
                         toolCategories[i][j].delete(aTool);
                         Console.WriteLine("Tool Deleted");
+                        toolCount -= 1;
                     }
                 }
             }
@@ -235,9 +239,10 @@ namespace Tools_Library_Application_Software
                     if (toolCategories[i][j].search(aTool))
                     {
                         aTool.Quantity--;
-                        message = "Tool quantity is now " + aTool.Quantity; 
+                        message = "Tool quantity is now " + aTool.Quantity;
                         break;
-                    } else
+                    }
+                    else
                     {
                         //message = "Tool not found";
                     }
@@ -245,7 +250,7 @@ namespace Tools_Library_Application_Software
             }
             Console.WriteLine(message);
         }
-        
+
 
         public void delete(Member aMember)
         {
@@ -254,16 +259,20 @@ namespace Tools_Library_Application_Software
 
         public void displayBorrowingTools(Member aMember)
         {
-            if (members.search(aMember) == true) {
+            if (members.search(aMember) == true)
+            {
                 aMember.GetMemberTools();
-            } else {
+            }
+            else
+            {
                 Console.WriteLine("Member Doesn't Exist");
             }
         }
 
         public void displayTools(string aToolType)
         {
-            ToolTypes ?toolTypes = null;
+            bool notFound = false;
+            ToolTypes toolTypes = ToolTypes.airCompressors;
             switch (aToolType)
             {
                 // Garden Tools
@@ -283,7 +292,121 @@ namespace Tools_Library_Application_Software
                     toolTypes = ToolTypes.gardenPowerTools;
                     break;
 
-                // Electronic Tools
+                // Garden Tools
+                case "Scapers":
+                    toolTypes = ToolTypes.scrapers;
+                    break;
+                case "Floor Lasers":
+                    toolTypes = ToolTypes.floorLasers;
+                    break;
+                case "Floor Levelling Tools":
+                    toolTypes = ToolTypes.floorLevellingTools;
+                    break;
+                case "Floor Levelling Materials":
+                    toolTypes = ToolTypes.floorLevellingMaterials;
+                    break;
+                case "Floor Hand Tools":
+                    toolTypes = ToolTypes.floorLasers;
+                    break;
+                case "Tiling Tools":
+                    toolTypes = ToolTypes.tilingTools;
+                    break;
+
+                // Garden Tools
+                case "Hand Tools":
+                    toolTypes = ToolTypes.scrapers;
+                    break;
+                case "Electric Fencing":
+                    toolTypes = ToolTypes.floorLasers;
+                    break;
+                case "Steel Fencing Tools":
+                    toolTypes = ToolTypes.floorLevellingTools;
+                    break;
+                case "Power Tools":
+                    toolTypes = ToolTypes.floorLevellingMaterials;
+                    break;
+                case "Fencing Accessories":
+                    toolTypes = ToolTypes.floorLasers;
+                    break;
+
+                // Garden Tools
+                case "Distance Tools":
+                    toolTypes = ToolTypes.distanceTools;
+                    break;
+                case "Laser Measurer":
+                    toolTypes = ToolTypes.laserMeasurer;
+                    break;
+                case "Measuring Jugs":
+                    toolTypes = ToolTypes.measuringJugs;
+                    break;
+                case "Tempreture & Humidity Tools":
+                    toolTypes = ToolTypes.tempretureAndHumidityTools;
+                    break;
+                case "Levelling Tools":
+                    toolTypes = ToolTypes.levellingTools;
+                    break;
+                case "Markers":
+                    toolTypes = ToolTypes.markers;
+                    break;
+
+                // Garden Tools
+                case "Draining":
+                    toolTypes = ToolTypes.draining;
+                    break;
+                case "Car Cleaning":
+                    toolTypes = ToolTypes.carCleaning;
+                    break;
+                case "Vacuum":
+                    toolTypes = ToolTypes.vacuum;
+                    break;
+                case "Pressure Cleaners":
+                    toolTypes = ToolTypes.pressureCleaners;
+                    break;
+                case "Pool Cleaning":
+                    toolTypes = ToolTypes.poolCleaning;
+                    break;
+                case "Floor Cleaning":
+                    toolTypes = ToolTypes.floorCleaning;
+                    break;
+
+                // Garden Tools
+                case "Sanding Tools":
+                    toolTypes = ToolTypes.sandingTools;
+                    break;
+                case "Brushes":
+                    toolTypes = ToolTypes.brushes;
+                    break;
+                case "Rollers":
+                    toolTypes = ToolTypes.rollers;
+                    break;
+                case "Paint Removal Tools":
+                    toolTypes = ToolTypes.paintRemovalTools;
+                    break;
+                case "Paint Scrapers":
+                    toolTypes = ToolTypes.paintScrapers;
+                    break;
+                case "Sprayers":
+                    toolTypes = ToolTypes.sprayers;
+                    break;
+
+                // Garden Tools
+                case "Voltage Tester":
+                    toolTypes = ToolTypes.voltageTester;
+                    break;
+                case "Oscilloscopes":
+                    toolTypes = ToolTypes.oscilloscopes;
+                    break;
+                case "Thermal Imaging":
+                    toolTypes = ToolTypes.thermalImaging;
+                    break;
+                case "Data test Tools":
+                    toolTypes = ToolTypes.dataTestTool;
+                    break;
+                case "Insulation Testers":
+                    toolTypes = ToolTypes.insulationTesters;
+                    break;
+
+                // Garden Tools
                 case "Test Equipment":
                     toolTypes = ToolTypes.testEquipment;
                     break;
@@ -299,18 +422,40 @@ namespace Tools_Library_Application_Software
                 case "Cable Tools":
                     toolTypes = ToolTypes.cableTools;
                     break;
+
+                // Garden Tools
+                case "Jacks":
+                    toolTypes = ToolTypes.jacks;
+                    break;
+                case "Air Compressors":
+                    toolTypes = ToolTypes.airCompressors;
+                    break;
+                case "Battery Chargers":
+                    toolTypes = ToolTypes.batteryChargers;
+                    break;
+                case "Socket Tools":
+                    toolTypes = ToolTypes.socketTools;
+                    break;
+                case "Braking":
+                    toolTypes = ToolTypes.braking;
+                    break;
+                case "Drivetrain":
+                    toolTypes = ToolTypes.driveTrain;
+                    break;
+                default:
+                    Console.WriteLine("Tool Type not found\n");
+                    notFound = true;
+                    break;
             }
 
-            Console.WriteLine(aToolType + ":");
-            toolCollectionSelection(toolTypes).writeToolsToConsole();
+            if (notFound == false)
+            {
+                Console.WriteLine(aToolType + ":");
+                toolCollectionSelection(toolTypes).writeToolsToConsole();
+            }
         }
 
-        public void displayTopTHree()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ToolCollection toolCollectionSelection(ToolTypes ?toolType)
+        public ToolCollection toolCollectionSelection(ToolTypes toolType)
         {
             switch (toolType)
             {
@@ -442,9 +587,10 @@ namespace Tools_Library_Application_Software
             if (members.search(aMember))
             {
                 return aMember.Tools;
-            } else
+            }
+            else
             {
-                string[] message = {"No Member Tools"};
+                string[] message = { "No Member Tools" };
                 return message;
             }
         }
@@ -485,11 +631,85 @@ namespace Tools_Library_Application_Software
                     searchMember.ContactNumber +
                     "Member Pin:\n" +
                     searchMember.PIN);
-            } else
+            }
+            else
             {
                 Console.WriteLine("Member not found");
             }
 
+        }
+        public bool memberLogin(Member aMember)
+        {
+            bool accessAccepted = false;
+            foreach (Member member in members.toArray())
+            {
+                if (member.FirstName == aMember.FirstName && member.LastName == aMember.LastName && member.PIN == aMember.PIN)
+                {
+                    aMember = member;
+                    accessAccepted = true;
+                }
+                else
+                {
+                    accessAccepted = false;
+                }
+            }
+            return accessAccepted;
+        }
+        public void displayTopTHree()
+        {
+            ToolCollection allTools = new ToolCollection(toolCount);
+
+            for (int i = 0; i < toolCategories.Length; i++)
+            {
+                for (int j = 0; j < toolCategories[i].Length; j++)
+                {
+                    foreach (Tool tool in toolCategories[i][j].toArray() ?? Enumerable.Empty<Tool>())
+                    {
+                        if (tool != null)
+                        {
+                            allTools.add(tool);
+                        }
+                    }
+                }
+            }
+
+            Tool[] totalTool = allTools.toArray();
+            heapSort(totalTool, toolCount - 1);
+
+            for (int i = totalTool.Length - 1; i > totalTool.Length - 4; i--)
+            {
+                Console.WriteLine("{0}) {1}", totalTool.Length - i, totalTool[i]);
+            }
+            
+        }
+        public static void heapSort(Tool[] arr, int n)
+        {
+            for (int i = n / 2 - 1; i >= 0; i--)
+                heapify(arr, n, i);
+            for (int i = n - 1; i >= 0; i--)
+            {
+                Tool temp = arr[0];
+                arr[0] = arr[i];
+                arr[i] = temp;
+                heapify(arr, i, 0);
+            }
+        }
+        static void heapify(Tool[] arr, int n, int i)
+        {
+            int largest = i;
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            if (left < n && arr[left].NoBorrowings > arr[largest].NoBorrowings)
+                largest = left;
+            if (right < n && arr[right].NoBorrowings > arr[largest].NoBorrowings)
+                largest = right;
+            if (largest != i)
+            {
+                Tool swap = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = swap;
+                heapify(arr, n, largest);
+            }
         }
     }
 }
