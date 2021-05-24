@@ -6,4 +6,8 @@
     <RootNamespace>Tools_Library_Application_Software</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>
